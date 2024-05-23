@@ -21,7 +21,8 @@ describe.only('ToUpperCase examples', ()=>{
         {input: 'abc', expected: 'ABC'},
         {input: 'My-String', expected: 'MY-STRING'},
         {input: 'def', expected: 'DEF'}
-    ])('input toUpperCase should be $expected',()=>{
+    ])('input toUpperCase should be $expected',({input, expected})=>{
+        const acutal = toUpperCase(input);
 
     })
 })

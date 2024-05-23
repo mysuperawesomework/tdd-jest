@@ -16,6 +16,16 @@ describe('Utils test suite', ()=> {
 
 });
 
+describe.only('ToUpperCase examples', ()=>{
+    it.each([
+        {input: 'abc', expected: 'ABC'},
+        {input: 'My-String', expected: 'MY-STRING'},
+        {input: 'def', expected: 'DEF'}
+    ])('input toUpperCase should be $expected',()=>{
+
+    })
+})
+
 describe('getSringInfo for arg My-String should', ()=>{
     test('return correct length',()=>{
         const actual = getStringInfo('My-String');

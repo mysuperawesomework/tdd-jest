@@ -14,19 +14,34 @@ describe('Utils test suite', ()=> {
         expect(actual).toBe('ABC');
     });
 
-    it.only('shold return info for valid string', ()=>{
+});
+
+describe('getSringInfo for arg My-String should', ()=>{
+    test('return correct length',()=>{
         const actual = getStringInfo('My-String');
-
-        expect(actual.lowerCase).toBe('my-string');
-        expect(actual.extraInfo).toEqual({});
-
         expect(actual.characters).toHaveLength(9);
-
+    });
+    test('return correct lower case',()=>{
+        const actual = getStringInfo('My-String');
+        expect(actual.lowerCase).toBe('my-string');
+    });
+    test('return correct upper case',()=>{
+        const actual = getStringInfo('My-String');
+        expect(actual.upperCase).toBe('MY-STRING');
+    });
+    test('return correct characters',()=>{
+        const actual = getStringInfo('My-String');
         expect(actual.characters).toContain<string>('M');
         expect(actual.characters).toEqual(
             expect.arrayContaining(['M', 'y', '-', 'S', 't', 'r', 'i', 'n', 'g'])
-        );
-        expect(actual.extraInfo).toBeTruthy();
+        )
     });
-
+    test('return defined extra info',()=>{
+        const actual = getStringInfo('My-String');
+        expect(actual.extraInfo).toBeDefined();
+    });
+    test('return correct extra info',()=>{
+        const actual = getStringInfo('My-String');
+        expect(actual.extraInfo).toEqual({});
+    });
 });

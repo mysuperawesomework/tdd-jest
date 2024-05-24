@@ -11,11 +11,6 @@ describe('Utils test suite', ()=> {
             console.log('Setup')
         })
 
-        afterEach(()=>{
-            // clearing mocks
-            console.log('Teardown')
-        })
-
         it('Should return correct upperCase', ()=>{
             const sut = new StringUtils();
 
@@ -23,7 +18,33 @@ describe('Utils test suite', ()=> {
 
             expect(actual).toBe('ABC');
         })
-    })
+
+        it('Should throw error on invalid argument - function', ()=>{
+            function expectError(){
+                const actual = sut.toUpperCase('');
+            }
+            expect(expectError).toThrow();
+            expect(expectError).toThrow('Invalid Argument!');
+        });
+
+        it('Should throw error on invalid argument - arrow function', ()=>{
+            expect(()=>{
+                const actual = sut.toUpperCase('');
+            }).toThrow();
+        });
+
+        it('Should throw error on invalid argument - try catch block', (done)=>{
+            try{
+                sut.toUpperCase('');
+                done('GetStringInfo should throw error for invalid arg!')
+            } catch(error) {
+                expect(error).toBeInstanceOf(Error);
+                expect(error).toHaveProperty('message', 'Invalid Argument!');
+                done();
+            }
+    
+        })
+    });
 
     it('should return uppercase of valid string', ()=>{
         // Arrange:
